@@ -1,45 +1,52 @@
 export class Note
 {
+  #is_org;
   _tel = [];
   _email = [];
+
 
   //tel is an array of telephones
   add_tel(tel)
   {
-    this._tel = this._tel.concat(tel);
+    this._tel.push(tel);
   }
 
   //email is an arraz of emails
   add_email(email)
   {
-    this._email = this._email.concat(email);
+    this._email.push(email);
   }
 
   find_tel(tel)
   {
-    let val = this.#find_el(tel, this._tel);
-    if (!val)
-    {
-      return val;
-    }
-    else
-    {
-      return "there isn't this number";
-    }
+    return this.#find_el(tel, this._tel);
   }
 
   find_email(email)
   {
-    let val = this.#find_el(email, this._email);
-    if (!val)
-    {
-      return val;
-    }
-    else
-    {
-      return "there isn't this email";
-    }
+    return this.#find_el(email, this._email);
   }
+
+  is_this_name(name)
+  {
+    if (this._name == name)
+    {
+      return true;
+    }
+    return false;
+  }
+
+  is_the_part_of_name(name)
+  {
+    let str = this._name.split(' ');
+    let val = str.find((el) => {return el == name;});
+    if (typeof val == 'undefined')
+    {
+      return false;
+    }
+    return true;
+  }
+  
 
   get email()
   {
@@ -61,12 +68,23 @@ export class Note
     return this.#is_org;
   }
 
+  set nme(nm)
+  {
+    this._name = nm;
+  }
+
+  get nme()
+  {
+    return this._name;
+  }
+
+
   #find_el(el, arr)
   {
-    let und = arr.find((el1) => {return el == el1;});
+    let und = arr.find((el1) => { return el == el1;});
     if (typeof und !== 'undefined')
     {
-      return und;
+      return true;
     }
     else
     {

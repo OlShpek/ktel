@@ -1,7 +1,10 @@
-import { Note } from "./note";
+import { Note } from "./note.js";
 
 export class Organisation extends Note
 {
+    #to_do;
+    #lider;
+
     constructor(nm, td, ld)
     {
         super();
@@ -9,16 +12,6 @@ export class Organisation extends Note
         this.nme = nm;
         this.to_do = td;
         this.lider = ld;
-    }
-
-    set nme(nm)
-    {
-        this.#name = nm;
-    }
-
-    get nme()
-    {
-        return this.#name;
     }
 
     set to_do(td)
